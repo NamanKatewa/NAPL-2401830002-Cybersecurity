@@ -5,7 +5,7 @@ import (
 	"strconv"
 )
 
-func main() {
+func test() {
 	// fmt.Println("Hello! Naman")
 	// fmt.Println()
 	// var a int = 10
