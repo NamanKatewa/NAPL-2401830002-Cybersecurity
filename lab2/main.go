@@ -26,10 +26,10 @@ func main() {
 	exponent := 8
 	fmt.Printf("%d to the power of %d: %d\n\n", base, exponent, utils.Power(base, exponent))
 
-	demonstrateCollections()
+	collections()
 }
 
-func demonstrateCollections() {
+func collections() {
 	fmt.Println("=== Slice Operations ===")
 
 	students := []string{"Alice", "Bob", "Charlie"}
