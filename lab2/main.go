@@ -1,8 +1,11 @@
 package main
 
 import (
+	"bufio"
 	"fmt"
 	"lab2/utils"
+	"os"
+	"strconv"
 )
 
 func main() {
@@ -26,52 +29,81 @@ func main() {
 	exponent := 8
 	fmt.Printf("%d to the power of %d: %d\n\n", base, exponent, utils.Power(base, exponent))
 
-	collections()
+	demonstrateCollections()
 }
 
-func collections() {
-	fmt.Println("--- Slice Operations ---")
+func demonstrateCollections() {
+	scanner := bufio.NewScanner(os.Stdin)
 
+	fmt.Println("--- Slice Operations ---")
 	students := []string{"Alice", "Bob", "Charlie"}
 	fmt.Printf("Initial slice: %v\n", students)
 
-	students = append(students, "David")
-	fmt.Printf("After adding 'David': %v\n", students)
+	// Add an element
+	fmt.Print("\nEnter a student name to add: ")
+	scanner.Scan()
+	newStudent := scanner.Text()
+	students = append(students, newStudent)
+	fmt.Printf("After adding '%s': %v\n", newStudent, students)
 
-	if len(students) > 1 {
-		students[1] = "Bob (Updated)"
-		fmt.Printf("After updating index 1: %v\n", students)
+	// Update an element
+	fmt.Printf("\nEnter an index to update (0 to %d): ", len(students)-1)
+	scanner.Scan()
+	if idx, err := strconv.Atoi(scanner.Text()); err == nil && idx >= 0 && idx < len(students) {
+		fmt.Print("Enter the new name: ")
+		scanner.Scan()
+		updatedName := scanner.Text()
+		students[idx] = updatedName
+		fmt.Printf("After updating index %d: %v\n", idx, students)
+	} else {
+		fmt.Println("Invalid index! Skipping update.")
 	}
 
-	indexToRemove := 2
-	if indexToRemove < len(students) {
-		students = append(students[:indexToRemove], students[indexToRemove+1:]...)
-		fmt.Printf("After removing index 2: %v\n", students)
+	// Remove an element
+	fmt.Printf("\nEnter an index to remove (0 to %d): ", len(students)-1)
+	scanner.Scan()
+	if idx, err := strconv.Atoi(scanner.Text()); err == nil && idx >= 0 && idx < len(students) {
+		students = append(students[:idx], students[idx+1:]...)
+		fmt.Printf("After removing index %d: %v\n", idx, students)
+	} else {
+		fmt.Println("Invalid index! Skipping removal.")
 	}
 
-	fmt.Println()
-
-	fmt.Println("--- Map Operations ---")
-
+	fmt.Println("\n--- Map Operations ---")
 	marks := map[string]int{
 		"Math":    90,
 		"Physics": 85,
 	}
 	fmt.Printf("Initial map: %v\n", marks)
 
-	marks["Chemistry"] = 92
-	fmt.Printf("After inserting 'Chemistry': %v\n", marks)
+	// Insert / Update
+	fmt.Print("\nEnter a subject to add or update: ")
+	scanner.Scan()
+	subject := scanner.Text()
 
-	marks["Physics"] = 88
-	fmt.Printf("After updating 'Physics' to 88: %v\n", marks)
-
-	subject := "Math"
-	if score, exists := marks[subject]; exists {
-		fmt.Printf("Lookup '%s': found with score %d\n", subject, score)
+	fmt.Printf("Enter the score for %s: ", subject)
+	scanner.Scan()
+	if score, err := strconv.Atoi(scanner.Text()); err == nil {
+		marks[subject] = score
+		fmt.Printf("After updating '%s': %v\n", subject, marks)
 	} else {
-		fmt.Printf("Lookup '%s': not found\n", subject)
+		fmt.Println("Invalid score! Skipping insertion/update.")
 	}
 
-	delete(marks, "Math")
-	fmt.Printf("After deleting 'Math': %v\n", marks)
+	// Lookup
+	fmt.Print("\nEnter a subject to lookup: ")
+	scanner.Scan()
+	lookupSubject := scanner.Text()
+	if score, exists := marks[lookupSubject]; exists {
+		fmt.Printf("Lookup '%s': found with score %d\n", lookupSubject, score)
+	} else {
+		fmt.Printf("Lookup '%s': not found\n", lookupSubject)
+	}
+
+	// Delete
+	fmt.Print("\nEnter a subject to delete: ")
+	scanner.Scan()
+	subjectToDelete := scanner.Text()
+	delete(marks, subjectToDelete)
+	fmt.Printf("After deleting '%s': %v\n", subjectToDelete, marks)
 }
