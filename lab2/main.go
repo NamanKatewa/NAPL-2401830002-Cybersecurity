@@ -7,21 +7,21 @@ import (
 
 func main() {
 	fmt.Println("--- String Manipulation ---")
-	
+
 	str := "Cybersecurity"
 	fmt.Printf("Original String: %s\n", str)
-	
+
 	reversedStr := utils.Reverse(str)
 	fmt.Printf("Reversed: %s\n", reversedStr)
-	
+
 	vowelCount := utils.CountVowels(str)
 	fmt.Printf("Vowels: %d\n\n", vowelCount)
-	
+
 	fmt.Println("--- Mathematical Utilities ---")
-	
+
 	num := 5
 	fmt.Printf("Factorial of %d: %d\n", num, utils.Factorial(num))
-	
+
 	base := 2
 	exponent := 8
 	fmt.Printf("%d to the power of %d: %d\n\n", base, exponent, utils.Power(base, exponent))
@@ -30,7 +30,7 @@ func main() {
 }
 
 func collections() {
-	fmt.Println("=== Slice Operations ===")
+	fmt.Println("--- Slice Operations ---")
 
 	students := []string{"Alice", "Bob", "Charlie"}
 	fmt.Printf("Initial slice: %v\n", students)
@@ -51,7 +51,7 @@ func collections() {
 
 	fmt.Println()
 
-	fmt.Println("=== Map Operations ===")
+	fmt.Println("--- Map Operations ---")
 
 	marks := map[string]int{
 		"Math":    90,
