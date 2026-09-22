@@ -57,6 +57,36 @@ func (p Person) Print() {
 	fmt.Println(strings.Repeat("-", 25))
 }
 
+func modifyValue(val *int) {
+	*val = *val + 100
+}
+
+func demonstratePointers() {
+	fmt.Println("\n========== Pointer Demonstration ==========")
+
+	var myVar int = 42
+	fmt.Printf("Original variable value: %d\n", myVar)
+	fmt.Printf("Variable address (&myVar): %p\n", &myVar)
+
+	var myPtr *int = &myVar
+	fmt.Printf("Value accessed using pointer (*myPtr): %d\n", *myPtr)
+
+	fmt.Printf("\nBefore modifyValue: myVar = %d\n", myVar)
+	modifyValue(&myVar)
+	fmt.Printf("After modifyValue: myVar = %d\n", myVar)
+
+	personPtr := new(Person)
+	fmt.Printf("\nNewly allocated Person struct (using new): %+v\n", *personPtr)
+
+	// Modify fields through the pointer (implicitly and explicitly)
+	personPtr.Name = "Alice"
+	(*personPtr).Age = 30
+	personPtr.Job = "Engineer"
+	personPtr.Salary = 90000.0
+
+	fmt.Printf("Modified Person struct accessed through pointer: %+v\n", *personPtr)
+}
+
 func main() {
 	var persons []Person
 
@@ -80,4 +110,6 @@ func main() {
 	for _, p := range persons {
 		p.Print()
 	}
+
+	demonstratePointers()
 }
