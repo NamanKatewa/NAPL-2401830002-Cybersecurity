@@ -1,0 +1,20 @@
+[
+  {
+    "DocId": 1,
+    "DocName": "Alice",
+    "DocDept": "Cybersecurity",
+    "DocGpa": 3.9
+  },
+  {
+    "DocId": 2,
+    "DocName": "Bob",
+    "DocDept": "ComputerScience",
+    "DocGpa": 3.7
+  },
+  {
+    "DocId": 4,
+    "DocName": "Diana",
+    "DocDept": "DataScience",
+    "DocGpa": 3.8
+  }
+]

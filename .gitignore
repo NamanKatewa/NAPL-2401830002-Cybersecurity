@@ -1,0 +1,24 @@
+# .NET / F# build outputs
+bin/
+obj/
+*.user
+*.suo
+.vs/
+
+# Go binaries and test outputs
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+*.test
+*.out
+
+# OS generated files
+Thumbs.db
+Desktop.ini
+.DS_Store
+
+# IDE & Editor folders
+.vscode/
+.idea/
