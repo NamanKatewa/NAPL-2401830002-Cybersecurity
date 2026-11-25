@@ -22,3 +22,12 @@ Desktop.ini
 # IDE & Editor folders
 .vscode/
 .idea/
+
+# Clojure / Leiningen build outputs
+target/
+.lein-repl-history
+.lein-failures
+pom.xml
+pom.xml.asc
+*.jar
+
